@@ -1,5 +1,5 @@
 import { LoadingButton } from "@mui/lab";
-import { Box, Card, Stack, TextField } from "@mui/material";
+import { Box, Card, Stack, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -29,9 +29,36 @@ const Login = () => {
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "center", mt: "6rem" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        mt: "6rem",
+      }}
+    >
+      <Typography
+        sx={{
+          fontFamily: "Poppins",
+          fontWeight: 600,
+          fontSize: "2rem",
+          mb: "2rem",
+        }}
+      >
+        JWT Refresh Token
+      </Typography>
       <Card elevation={15} sx={{ padding: "2rem", borderRadius: "25px" }}>
         <Stack direction={"column"} spacing={2}>
+          <Typography
+            sx={{
+              textAlign: "left",
+              fontWeight: 600,
+              fontFamily: "Poppins",
+              fontSize: "2rem",
+            }}
+          >
+            Login
+          </Typography>
           <TextField
             fullWidth
             variant="outlined"
@@ -59,7 +86,7 @@ const Login = () => {
             }}
             onClick={handleOnLogin}
           >
-            Login
+            Submit
           </LoadingButton>
         </Stack>
       </Card>

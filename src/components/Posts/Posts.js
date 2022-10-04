@@ -1,4 +1,10 @@
-import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  CircularProgress,
+  Typography,
+} from "@mui/material";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -20,43 +26,73 @@ const Posts = () => {
   }, [dispatch, axiosPrivate, navigate]);
 
   return (
-    <div style={{ marginTop: "6rem" }}>
+    <Box
+      sx={{
+        mt: "6rem",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        width: 1,
+      }}
+    >
+      <Typography
+        sx={{
+          fontFamily: "Poppins",
+          fontWeight: 600,
+          fontSize: "2rem",
+          mb: "2rem",
+        }}
+      >
+        User Posts
+      </Typography>
       {!posts && <CircularProgress />}
-      {posts &&
-        posts.map((post, i) => (
-          <Card
-            key={i}
-            elevation={24}
-            sx={{
-              p: "1rem",
-            }}
-          >
-            <CardContent>
-              <Typography
-                sx={{
-                  fontFamily: "Poppins",
-                  fontWeight: 600,
-                  fontSize: "1.5rem",
-                  textTransform: "capitalize",
-                }}
-              >
-                {post.username}
-              </Typography>
-              <Typography
-                sx={{
-                  fontFamily: "Poppins",
-                  fontWeight: 500,
-                  fontStyle: "italic",
-                  fontSize: "1.5rem",
-                  textTransform: "capitalize",
-                }}
-              >
-                {post.title}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
-    </div>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+          gap: "2rem",
+          width: 1,
+        }}
+      >
+        {posts &&
+          posts.map((post, i) => (
+            <Card
+              key={i}
+              elevation={24}
+              sx={{
+                p: "2rem",
+                borderRadius: "15px",
+              }}
+            >
+              <CardContent>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins",
+                    fontWeight: 600,
+                    fontSize: "1.5rem",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {post.username}
+                </Typography>
+                <Typography
+                  sx={{
+                    fontFamily: "Poppins",
+                    fontWeight: 500,
+                    fontStyle: "italic",
+                    fontSize: "1.5rem",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  {post.title}
+                </Typography>
+              </CardContent>
+            </Card>
+          ))}
+      </Box>
+    </Box>
   );
 };
 
